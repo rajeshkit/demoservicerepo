@@ -13,7 +13,7 @@ pipeline {
         stage('Mvn Build') {
             steps {
                 script {
-                    cmd 'mvn clean install'
+                    bat 'mvn clean install'
                       echo 'maven build is done'
                 }
             }
@@ -21,14 +21,14 @@ pipeline {
         stage('docker image'){
             steps{
              	
-                cmd 'docker build -t 9894851315/demoserviceimage:${BUILD_NUMBER} -f Dockerfile .'
+                bat 'docker build -t 9894851315/demoserviceimage:${BUILD_NUMBER} -f Dockerfile .'
                 echo 'docker image is created'
             }
         }
         stage('docker deploy'){
             steps{
-                cmd 'docker container rm -f demoservicecontainer'
-                cmd 'docker run --name demoservicecontainer -itd -p 8888:9999 9894851315/demoserviceimage:${BUILD_NUMBER}'
+                bat 'docker container rm -f demoservicecontainer'
+                bat 'docker run --name demoservicecontainer -itd -p 8888:9999 9894851315/demoserviceimage:${BUILD_NUMBER}'
                 echo 'docker container is created'
                 echo 'docker container is running'
             }
