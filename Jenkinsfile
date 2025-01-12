@@ -13,6 +13,7 @@ pipeline {
         stage('Mvn Build') {
             steps {
 				 withMaven {
+					maven: 'maven-3.8.4'
           			bat "mvn clean verify"
           			echo 'maven build is done'
         		 }
