@@ -1,6 +1,8 @@
 pipeline {
     agent any
- 
+ 	tools {
+		maven 'maven-3.8.4'
+	}
     stages {
       stage('Git Checkout') {
             steps {
@@ -13,7 +15,7 @@ pipeline {
         stage('Mvn Build') {
             steps {
 				 withMaven {
-					maven 'maven-3.8.4'
+					
           			bat "mvn clean verify"
           			echo 'maven build is done'
         		 }
