@@ -6,21 +6,20 @@ pipeline {
             steps {
                 script {
                     git url: 'https://github.com/rajeshkit/demoservicerepo.git'
-                      echo 'git checkout is done code pulled from github to jenkins workspace'
+                    echo 'git checkout is done code pulled from github to jenkins workspace'
                 }
             }
         }
         stage('Mvn Build') {
             steps {
                 script {
-                    sh 'mvn clean install'
-                      echo 'maven build is done'
+                    bat 'mvn clean install'
+                    echo 'maven build is done'
                 }
             }
         }
         stage('docker image'){
             steps{
-             	
                 sh 'docker build -t 9894851315/demoserviceimage:${BUILD_NUMBER} -f Dockerfile .'
                 echo 'docker image is created'
             }
