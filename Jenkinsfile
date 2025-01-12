@@ -12,10 +12,10 @@ pipeline {
         }
         stage('Mvn Build') {
             steps {
-                script {
-                    bat 'mvn clean install'
-                    echo 'maven build is done'
-                }
+				 withMaven {
+          			bat "mvn clean verify"
+          			echo 'maven build is done'
+        		 }
             }
         }
         stage('docker image'){
