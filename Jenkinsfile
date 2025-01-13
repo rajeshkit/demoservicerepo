@@ -22,7 +22,7 @@ pipeline {
             steps{
 				echo "Build no is ${BUILD_ID}"
 				echo "Build no is ${BUILD_NUMBER}"
-                bat 'docker build -t 9894851315/demoserviceimage:${BUILD_NUMBER} -f Dockerfile .'
+                bat 'docker build -t 9894851315/demoserviceimage -f Dockerfile .'
                 echo 'docker image is created'
             }
         }
