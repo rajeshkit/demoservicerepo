@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools { 
+		maven 'MAVEN_HOME'
+	}
     stages {
       stage('Git Checkout') {
             steps {
@@ -11,11 +14,8 @@ pipeline {
         }
         stage('Mvn Build') {
             steps {
-				 withMaven {
-					
-          			bat "mvn clean verify"
+					bat "mvn clean install"
           			echo 'maven build is done'
-        		 }
             }
         }
         stage('docker image'){
