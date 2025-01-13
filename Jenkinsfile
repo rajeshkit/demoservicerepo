@@ -29,7 +29,7 @@ pipeline {
         stage('docker deploy'){
             steps{
                 bat 'docker container rm -f demoservicecontainer'
-                bat 'docker run --name demoservicecontainer -itd -p 8888:9999 9894851315/demoserviceimage:${BUILD_NUMBER}'
+                bat 'docker run --name demoservicecontainer -itd -p 8888:9999 9894851315/demoserviceimage'
                 echo 'docker container is created'
                 echo 'docker container is running'
             }
