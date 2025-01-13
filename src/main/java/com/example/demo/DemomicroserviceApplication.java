@@ -16,7 +16,7 @@ public class DemomicroserviceApplication {
 	}
 	@GetMapping("/welcome")
 	public String getMethodName() {
-		return  "welcome to demo microservice";
+		return  "i am changed to spring boot app";
 	}
 	
 }
